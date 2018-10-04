@@ -1,4 +1,4 @@
-package com.telran.qa15.sandbox;
+package com.telran.qa15.sandbox.lesson1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
