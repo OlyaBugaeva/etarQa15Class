@@ -1,42 +1,14 @@
-package com.telRan.addressbook;
+package com.telRan.addressbook.manager;
 
+import com.telRan.addressbook.model.Group;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
-
-public class ApplicationManager  extends GroupHelper{
-
-  WebDriver wd;
-
-  public void start() {
-    wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook");
-
-    login("admin", "secret");
-  }
+public class GroupHelper extends HelperBase{
 
 
-
-  public void login(String userName, String password) {
-    type(By.name("user"), userName);
-   type(By.name("pass"), password);
-    click(By.cssSelector("[type=submit]"));
-  }
-
-  public void stop() {
-    wd.quit();
-  }
-
-
-
-  public void type(By locator, String text) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+  public GroupHelper(WebDriver wd) {
+    super(wd);
   }
 
   public void returnToGroupsPage() {
@@ -45,10 +17,6 @@ public class ApplicationManager  extends GroupHelper{
 
   public void submitGroupCreation() {
     click(By.name("submit"));
-  }
-
-  public void click(By locator) {
-    wd.findElement(locator).click();
   }
 
   public void fillGroupForm(Group group) {
@@ -74,21 +42,12 @@ public class ApplicationManager  extends GroupHelper{
     click(By.cssSelector("[name=edit]:last-child"));
   }
 
-  protected void selectGroup() {
+  public void selectGroup() {
     click(By.name("selected[]"));
   }
 
   public void deleteGroup() {
     click(By.xpath("//input[@name='delete'][2]"));
-  }
-
-  public boolean isElementPresent(By locator) {
-    try {
-      wd.findElement(locator);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
   }
 
   public  boolean isGroupPresent(){

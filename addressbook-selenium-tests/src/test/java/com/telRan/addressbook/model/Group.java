@@ -1,4 +1,4 @@
-package com.telRan.addressbook;
+package com.telRan.addressbook.model;
 
 public class Group {
   private String groupName;

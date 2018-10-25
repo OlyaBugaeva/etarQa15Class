@@ -1,5 +1,6 @@
-package com.telRan.addressbook;
+package com.telRan.addressbook.tests;
 
+import com.telRan.addressbook.manager.ApplicationManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
