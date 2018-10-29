@@ -14,13 +14,14 @@ public class ApplicationManager {
   public void start() {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    navigationHelper = new NavigationHelper(wd);
     navigationHelper.openSite("http://localhost/addressbook");
     sessionHelper = new SessionHelper(wd);
 
     sessionHelper.login("admin", "secret");
 
     groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
+
   }
 
 
